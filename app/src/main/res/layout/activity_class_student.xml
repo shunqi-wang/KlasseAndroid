@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:rowCount="2"
+    android:padding="10dp"
+    tools:context="com.example.asus.klasseapp.classStudent">
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/button3"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="#D878A7"
+        android:text="Chat"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:typeface="monospace" />
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/button5"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="#8795EE"
+        android:text="Slides"
+        android:textColor="#ffffff"
+        android:typeface="monospace" />
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/button4"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="#7FCA76"
+        android:text="Quiz"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/button"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="#F1EE8B"
+        android:text="Announcements"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+</GridLayout>
