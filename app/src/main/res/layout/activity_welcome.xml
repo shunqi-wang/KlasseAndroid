@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.asus.klasseapp.Welcome"
+    tools:context="com.example.asus.klasseandroid.Welcome"
     android:background="#5DDCD0"
     android:padding="70dp"
     >

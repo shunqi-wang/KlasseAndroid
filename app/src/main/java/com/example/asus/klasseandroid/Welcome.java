@@ -1,4 +1,4 @@
-package com.example.asus.klasseapp;
+package com.example.asus.klasseandroid;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -7,7 +7,7 @@
     android:columnCount="2"
     android:rowCount="2"
     android:padding="10dp"
-    tools:context="com.example.asus.klasseapp.classStudent">
+    tools:context="com.example.asus.klasseandroid.classStudent">
 
     <Button
         android:layout_margin="10dp"

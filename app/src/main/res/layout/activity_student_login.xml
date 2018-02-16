@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="90dp"
     android:background="#5DDCD0"
-    tools:context="com.example.asus.klasseapp.Login">
+    tools:context="com.example.asus.klasseandroid.Login">
 
 <EditText
     android:id="@+id/userId"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.asus.klasseapp.studentMain"
+    tools:context="com.example.asus.klasseandroid.studentMain"
     tools:showIn="@layout/app_bar_student_main">
 
     <TextView
