@@ -1,54 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="2"
-    android:rowCount="2"
-    android:padding="10dp"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+
     tools:context="com.example.asus.klasseandroid.classStudent">
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
     <Button
-        android:layout_margin="10dp"
-        android:id="@+id/button3"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:background="#D878A7"
+
+        android:id="@+id/chatbutton"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="#D45113"
         android:text="Chat"
         android:textColor="#ffffff"
-        android:textStyle="bold|italic"
-        android:typeface="monospace" />
+        android:textStyle="bold"
+         />
 
     <Button
-        android:layout_margin="10dp"
-        android:id="@+id/button5"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:background="#8795EE"
+
+        android:id="@+id/slidebutton"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="#19647E"
         android:text="Slides"
         android:textColor="#ffffff"
-        android:typeface="monospace" />
+        android:textStyle="bold"
+       />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
     <Button
-        android:layout_margin="10dp"
-        android:id="@+id/button4"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:background="#7FCA76"
+
+        android:id="@+id/quizbutton"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="#119DA4"
         android:text="Quiz"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:typeface="monospace" />
+         />
 
     <Button
-        android:layout_margin="10dp"
-        android:id="@+id/button"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:background="#F1EE8B"
+
+        android:id="@+id/announcebutton"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="#902D41"
         android:text="Announcements"
         android:textColor="#ffffff"
         android:textStyle="bold" />
-
-</GridLayout>
+    </LinearLayout>
+</LinearLayout>

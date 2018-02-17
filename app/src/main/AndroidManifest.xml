@@ -32,7 +32,8 @@
             android:name=".instructorMain"
             android:label="@string/title_activity_instructor_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".classStudent"></activity>
+        <activity android:name=".classStudent" />
+        <activity android:name=".ChatRoom"></activity>
     </application>
 
 </manifest>

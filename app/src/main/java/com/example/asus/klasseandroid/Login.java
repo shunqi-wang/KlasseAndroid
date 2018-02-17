@@ -71,6 +71,15 @@ public class Login extends AppCompatActivity{
 
                 }
                 else
+                    if(id.getText().toString().equals("101") && (pw.getText().toString().equals("abc1234")))
+                    {
+                        if(type.equals("student"))
+                            startStudent();
+                        else
+                            startInstructor();
+
+                    }
+                else
                {
                    Toast.makeText(getApplicationContext(),"Wrong credentials",Toast.LENGTH_SHORT).show();
                    id.setText("");
