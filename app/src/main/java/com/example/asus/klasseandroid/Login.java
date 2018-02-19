@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,23 +32,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import static android.Manifest.permission.READ_CONTACTS;
 
-/**
- * A login screen that offers login via email/password.
- */
 public class Login extends AppCompatActivity{
 
-    EditText id;
+    EditText email;
     EditText pw;
     String type;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+
+
         setContentView(R.layout.activity_student_login);
         Intent i=getIntent();
         Bundle b=i.getExtras();
@@ -55,42 +62,69 @@ public class Login extends AppCompatActivity{
         {
             type=b.getString("type");
         }
+
         Button login=findViewById(R.id.signin);
-        id=findViewById(R.id.userId);
+        email=findViewById(R.id.userId);
         pw=findViewById(R.id.password);
+        Log.i("anwesha",email.getText().toString());
+
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(id.getText().toString().equals("100") && (pw.getText().toString().equals("abc123")))
-                {
-                    if(type.equals("student"))
-                        startStudent();
-                    else
-                        startInstructor();
 
-                }
-                else
-                    if(id.getText().toString().equals("101") && (pw.getText().toString().equals("abc1234")))
-                    {
-                        if(type.equals("student"))
-                            startStudent();
+
+                final String em=email.getText().toString();
+
+
+                final String pass=pw.getText().toString();
+                Log.i("anwesha",em+pass);
+                mAuth.createUserWithEmailAndPassword(em, pass).addOnCompleteListener(Login.this,new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if(task.isSuccessful()){
+
+                            String user_id = mAuth.getCurrentUser().getUid();
+                            Log.i("anwesha",user_id);
+
+
+                        }
                         else
-                            startInstructor();
-
+                            Log.i("anwesha",task.getException().getMessage());
                     }
-                else
-               {
-                   Toast.makeText(getApplicationContext(),"Wrong credentials",Toast.LENGTH_SHORT).show();
-                   id.setText("");
-                   pw.setText("");
+                });
 
-               }
 
+                mAuth.signInWithEmailAndPassword(em, pass)
+                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                if (!task.isSuccessful()) {
+                                    // there was an error
+                                    if (pass.length() < 6) {
+                                        pw.setError("Minimum length=6");
+                                    } else {
+                                        Toast.makeText(Login.this, "Authentication failed", Toast.LENGTH_LONG).show();
+                                    }
+                                } else
+                                {
+
+                                    if(type.equals("student"))
+                                        startStudent();
+                                    else
+                                        startInstructor();
+                                    finish();
+                                }
+                            }
+                        });
             }
         });
 
-    }
+            }
+
     public void startStudent()
     {
         Intent launch = new Intent(this, studentMain.class);
