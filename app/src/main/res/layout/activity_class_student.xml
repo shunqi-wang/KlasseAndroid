@@ -22,6 +22,9 @@
         android:text="Chat"
         android:textColor="#ffffff"
         android:textStyle="bold"
+
+
+        android:drawablePadding="30dp"
          />
 
     <Button
