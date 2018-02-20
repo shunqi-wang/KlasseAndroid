@@ -9,11 +9,13 @@ import android.widget.Button;
 
 public class classStudent extends AppCompatActivity {
     Button chat;
+    Button announce;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_student);
         chat= findViewById(R.id.chatbutton);
+        announce=findViewById(R.id.announcebutton);
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -21,10 +23,21 @@ public class classStudent extends AppCompatActivity {
                 startChat();
             }
         });
+        announce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startAnnounce();
+            }
+        });
 
 
     }
     public void startChat()
+    {
+        Intent launch = new Intent(this, ChatRoom.class);
+        startActivity(launch);
+    }
+    public void startAnnounce()
     {
         Intent launch = new Intent(this, ChatRoom.class);
         startActivity(launch);
