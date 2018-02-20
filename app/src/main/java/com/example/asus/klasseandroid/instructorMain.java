@@ -1,5 +1,6 @@
 package com.example.asus.klasseandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -80,22 +81,33 @@ public class instructorMain extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_1)
+        {
+            Intent launch = new Intent(this, classInstructor.class);
+            launch.putExtra("class",1);
+            startActivity(launch);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_2)
+        {
+            Intent launch = new Intent(this, classInstructor.class);
+            launch.putExtra("class",2);
+            startActivity(launch);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_3)
+        {
+            Intent launch = new Intent(this, classInstructor.class);
+            launch.putExtra("class",3);
+            startActivity(launch);
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        }   else if (id == R.id.nav_logout)
+        {
+            Intent launch = new Intent(this, Login.class);
+            startActivity(launch);
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return true; //test
     }
 }

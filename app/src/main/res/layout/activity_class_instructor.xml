@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="4"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        tools:context="com.example.asus.klasseandroid.classStudent"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+
+            <Button
+                android:id="@+id/chatbuttoninstruct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_alignParentLeft="true"
+                android:background="#EC505E"
+                android:text="Enter chat room"
+                android:textColor="#ffffff"
+                />
+            <ImageView
+                android:padding="20dp"
+                android:layout_width="120dp"
+
+                android:layout_height="wrap_content"
+                android:src="@drawable/chat_white"
+                android:elevation="2dp"
+                android:layout_alignParentRight="true"
+                android:foregroundGravity="right"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+
+            <Button
+                android:id="@+id/announceinstruct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:background="#04A58C"
+                android:text="Make Announcement"
+                android:textColor="#ffffff"
+                />
+            <ImageView
+                android:padding="20dp"
+                android:layout_width="120dp"
+
+                android:layout_height="wrap_content"
+                android:src="@drawable/announce_white"
+                android:elevation="2dp"
+                android:layout_alignParentRight="true"
+                android:foregroundGravity="right"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+
+            <Button
+                android:id="@+id/quizbuttoninstruct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:background="#F5B149"
+                android:text="View Quizzes"
+                android:textColor="#ffffff"
+                />
+            <ImageView
+                android:padding="20dp"
+                android:layout_width="120dp"
+
+                android:layout_height="wrap_content"
+                android:src="@drawable/quiz_white"
+                android:elevation="2dp"
+                android:layout_alignParentRight="true"
+                android:foregroundGravity="right"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+
+            <Button
+                android:id="@+id/slidesbuttoninstruct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:background="#EF5F48"
+                android:text="View slides"
+                android:textColor="#ffffff"
+                />
+            <ImageView
+                android:padding="20dp"
+                android:layout_width="120dp"
+
+                android:layout_height="wrap_content"
+                android:src="@drawable/slides_white"
+                android:elevation="2dp"
+                android:layout_alignParentRight="true"
+                android:foregroundGravity="right"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+

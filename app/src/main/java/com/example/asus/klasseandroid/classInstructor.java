@@ -1,34 +1,29 @@
 package com.example.asus.klasseandroid;
 
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
-public class classStudent extends AppCompatActivity {
-    Button chat;
+public class classInstructor extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_student);
-        chat= findViewById(R.id.chatbutton);
-        Button announce=findViewById(R.id.announcebutton);
-        announce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startAnnounce();
-            }
-        });
-        ImageView ann=findViewById(R.id.announce_img);
-        ann.bringToFront();
-
+        setContentView(R.layout.activity_class_instructor);
+        Button chat=findViewById(R.id.chatbuttoninstruct);
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startChat();
+            }
+        });
+        Button announce=findViewById(R.id.announceinstruct);
+        announce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startAnnounce();
             }
         });
 
@@ -41,8 +36,7 @@ public class classStudent extends AppCompatActivity {
     }
     public void startAnnounce()
     {
-        Intent launch = new Intent(this, StudentAnnounce.class);
+        Intent launch = new Intent(this, InstructorAnnounce.class);
         startActivity(launch);
     }
-    }
-
+}
