@@ -21,7 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        app:fabSize="mini" />
+        app:fabSize="mini"/>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
