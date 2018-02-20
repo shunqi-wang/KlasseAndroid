@@ -6,66 +6,124 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     tools:context="com.example.asus.klasseandroid.classStudent">
-    <LinearLayout
-        android:layout_height="0dp"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-    <Button
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:weightSum="1"
+        android:layout_weight="1">
 
-        android:id="@+id/chatbutton"
-        android:layout_height="match_parent"
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_weight="1"
-        android:background="#D45113"
-        android:text="Chat"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        >
+
+        <Button
+            android:id="@+id/chatbutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+
+            android:background="#EC505E"
+            android:elevation="0dp"
+            android:paddingBottom="10dp" />
+        <ImageView
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chat_white"
+            android:layout_centerInParent="true"
+            android:elevation="2dp"
+            />
 
 
-        android:drawablePadding="30dp"
-         />
+    </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            >
     <Button
 
         android:id="@+id/slidebutton"
         android:layout_height="match_parent"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:background="#19647E"
-        android:text="Slides"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-       />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:gravity="center|bottom"
+        android:background="#04A58C"
+        android:paddingBottom="10dp"
 
+        />
+
+            <ImageView
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/slides_white"
+                android:elevation="2dp"/>
+        </RelativeLayout>
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:weightSum="1"
+        android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            >
     <Button
 
         android:id="@+id/quizbutton"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:background="#119DA4"
-        android:text="Quiz"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:paddingBottom="10dp"
+        android:background="#F5B149"
+
          />
+            <ImageView
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/quiz_white"
+                android:elevation="2dp"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            >
 
     <Button
 
         android:id="@+id/announcebutton"
         android:layout_height="match_parent"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:background="#902D41"
-        android:text="Announcements"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-    </LinearLayout>
+        android:layout_width="match_parent"
+        android:background="#EF5F48"
+        android:gravity="center|bottom"
+        android:paddingBottom="10dp"
+
+        />
+
+            <ImageView
+                android:padding="20dp"
+                android:id="@+id/announce_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/announce_white"
+                android:elevation="2dp"/>
+
+        </RelativeLayout>
+    </TableRow>
+    </TableLayout>
 </LinearLayout>

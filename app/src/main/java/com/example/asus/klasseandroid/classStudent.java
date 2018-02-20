@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class classStudent extends AppCompatActivity {
     Button chat;
@@ -14,6 +15,8 @@ public class classStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_student);
         chat= findViewById(R.id.chatbutton);
+        ImageView ann=findViewById(R.id.announce_img);
+        ann.bringToFront();
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
