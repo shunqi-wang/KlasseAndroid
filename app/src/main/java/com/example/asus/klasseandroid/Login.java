@@ -1,4 +1,4 @@
-package com.example.asus.klasseapp;
+package com.example.asus.klasseandroid;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -30,6 +30,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.asus.klasseandroid.R;
+
 
 import java.util.ArrayList;
 import java.util.List;

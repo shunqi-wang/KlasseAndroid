@@ -1,7 +1,9 @@
-package com.example.asus.klasseapp;
+package com.example.asus.klasseandroid;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.asus.klasseandroid.R;
 
 public class classStudent extends AppCompatActivity {
 
