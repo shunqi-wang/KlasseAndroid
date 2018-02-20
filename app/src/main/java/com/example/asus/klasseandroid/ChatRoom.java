@@ -19,6 +19,12 @@ public class ChatRoom extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     private FirebaseListAdapter<ChatMessage> adapter;
 
+    @Override protected void onStart()
+    {
+        super.onStart();
+        displayChatMessages();
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

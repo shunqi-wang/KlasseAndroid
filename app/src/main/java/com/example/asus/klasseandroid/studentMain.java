@@ -1,9 +1,11 @@
 package com.example.asus.klasseandroid;
 
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,6 +25,7 @@ public class studentMain extends AppCompatActivity
         setContentView(R.layout.activity_student_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +89,7 @@ public class studentMain extends AppCompatActivity
             Intent launch = new Intent(this, classStudent.class);
             launch.putExtra("class",1);
             startActivity(launch);
-            // Handle the camera action
+
         } else if (id == R.id.nav_2)
         {
             Intent launch = new Intent(this, classStudent.class);
@@ -99,10 +102,7 @@ public class studentMain extends AppCompatActivity
             launch.putExtra("class",3);
             startActivity(launch);
 
-        }  else if (id == R.id.nav_share)
-        {
-
-        } else if (id == R.id.nav_logout)
+        }   else if (id == R.id.nav_logout)
         {
             Intent launch = new Intent(this, Login.class);
             startActivity(launch);

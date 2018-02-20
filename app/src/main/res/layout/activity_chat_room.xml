@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-
+        android:src="@drawable/com_facebook_button_send_icon_white"
         android:id="@+id/fab"
         android:tint="@android:color/white"
         android:layout_alignParentBottom="true"

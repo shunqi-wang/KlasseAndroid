@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.asus.klasseandroid.Welcome"
-    android:background="#5DDCD0"
+    android:background="#04A58C"
     android:padding="70dp"
     >
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:background="#2CC9BA"
+        android:background="#03705F"
         android:elevation="20dp"
         android:padding="20dp"
         android:text="    Student   "
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#2CC9BA"
+        android:background="#03705F"
         android:elevation="20dp"
         android:padding="20dp"
         android:layout_margin="20dp"
