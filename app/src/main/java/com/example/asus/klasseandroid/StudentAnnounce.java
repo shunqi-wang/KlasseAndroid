@@ -30,7 +30,7 @@ public class StudentAnnounce extends AppCompatActivity {
         mHelper=new Database(this);
 
         dataBase = mHelper.getWritableDatabase();
-      
+
         Cursor mCursor = dataBase.rawQuery("SELECT * FROM " +"announcement", null);
 
         content.clear();
