@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "330263289015",
+    "firebase_url": "https://klasseandroid.firebaseio.com",
+    "project_id": "klasseandroid",
+    "storage_bucket": "klasseandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330263289015:android:96a2ff29107ab21a",
+        "android_client_info": {
+          "package_name": "com.example.asus.klasseandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330263289015-93os9uo33u8l37l5bb263ql7mmr7pmkv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asus.klasseandroid",
+            "certificate_hash": "42d6aaef625114d7db463cd3d275863c316c3dca"
+          }
+        },
+        {
+          "client_id": "330263289015-nfg9i8qvnpfsvhj2a21ujidj6lf170nh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDw2frsTxl4S5Njq3NuAym98fVx0viG7M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330263289015-nfg9i8qvnpfsvhj2a21ujidj6lf170nh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
