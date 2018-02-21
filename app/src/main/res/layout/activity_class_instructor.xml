@@ -26,6 +26,8 @@
                 android:layout_alignParentLeft="true"
                 android:background="#EC505E"
                 android:text="Enter chat room"
+                android:padding="10dp"
+                android:gravity="left|center_vertical"
                 android:textColor="#ffffff"
                 />
             <ImageView
@@ -53,6 +55,8 @@
                 android:layout_alignParentLeft="true"
                 android:background="#04A58C"
                 android:text="Make Announcement"
+                android:padding="10dp"
+                android:gravity="left|center_vertical"
                 android:textColor="#ffffff"
                 />
             <ImageView
@@ -80,6 +84,8 @@
                 android:layout_alignParentLeft="true"
                 android:background="#F5B149"
                 android:text="View Quizzes"
+                android:padding="10dp"
+                android:gravity="left|center_vertical"
                 android:textColor="#ffffff"
                 />
             <ImageView
@@ -107,6 +113,8 @@
                 android:layout_alignParentLeft="true"
                 android:background="#EF5F48"
                 android:text="View slides"
+                android:padding="10dp"
+                android:gravity="left|center_vertical"
                 android:textColor="#ffffff"
                 />
             <ImageView

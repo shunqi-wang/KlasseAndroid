@@ -29,7 +29,7 @@ public class InstructorAnnounce extends AppCompatActivity {
                 ContentValues values = new ContentValues();
 
                 values.put("content", e.getText().toString());
-
+                e.setText("");
 
                 db.insert("announcement", null, values);
 
