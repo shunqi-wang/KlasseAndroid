@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
      <CheckBox
+         android:id="@+id/checkannounce"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content" />
     <TextView

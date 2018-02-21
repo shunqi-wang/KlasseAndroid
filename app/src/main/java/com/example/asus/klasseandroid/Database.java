@@ -41,5 +41,11 @@ public class Database extends SQLiteOpenHelper{
         // Create tables again
         onCreate(db);
     }
+    public void clearDatabase(SQLiteDatabase db,String name) {
+        db.execSQL("DROP TABLE IF EXISTS " + name);
+
+        // Create tables again
+        onCreate(db);
+    }
 
 }
