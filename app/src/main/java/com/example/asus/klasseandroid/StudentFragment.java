@@ -50,11 +50,18 @@ public class StudentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         Button chat= getView().findViewById(R.id.chatbutton);
+        Button feedback = getView().findViewById(R.id.slidebutton);
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startChat();
+            }
+        });
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSlide();
             }
         });
         return inflater.inflate(R.layout.fragment_student, container, false);
@@ -63,6 +70,11 @@ public class StudentFragment extends Fragment {
     {
         Intent launch = new Intent(getActivity(), ChatRoom.class);
         startActivity(launch);
+    }
+
+    public void startSlide(){
+        Intent slide = new Intent(getActivity(), Feedback.class);
+        startActivity(slide);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

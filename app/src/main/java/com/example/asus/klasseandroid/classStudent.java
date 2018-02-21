@@ -16,9 +16,6 @@ public class classStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_student);
         chat= findViewById(R.id.chatbutton);
-<<<<<<< HEAD
-        announce=findViewById(R.id.announcebutton);
-=======
         Button announce=findViewById(R.id.announcebutton);
         announce.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,7 +25,6 @@ public class classStudent extends AppCompatActivity {
         });
         ImageView ann=findViewById(R.id.announce_img);
         ann.bringToFront();
->>>>>>> chatroom
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,11 +48,9 @@ public class classStudent extends AppCompatActivity {
     }
     public void startAnnounce()
     {
-<<<<<<< HEAD
-        Intent launch = new Intent(this, ChatRoom.class);
-=======
+
         Intent launch = new Intent(this, StudentAnnounce.class);
->>>>>>> chatroom
+
         startActivity(launch);
     }
     }
