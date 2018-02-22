@@ -24,7 +24,13 @@ public class classStudent extends AppCompatActivity {
         });
         ImageView ann=findViewById(R.id.announce_img);
         ann.bringToFront();
-
+        Button feedback = findViewById(R.id.slidebutton);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startFeedback();
+            }
+        });
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +48,11 @@ public class classStudent extends AppCompatActivity {
     public void startAnnounce()
     {
         Intent launch = new Intent(this, StudentAnnounce.class);
+        startActivity(launch);
+    }
+    public void startFeedback()
+    {
+        Intent launch = new Intent(this, FeedBack.class);
         startActivity(launch);
     }
     }

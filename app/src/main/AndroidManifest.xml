@@ -38,7 +38,9 @@
         <activity android:name=".ChatRoom" />
         <activity android:name=".StudentAnnounce" />
         <activity android:name=".InstructorAnnounce" />
-        <activity android:name=".classInstructor"></activity>
+        <activity android:name=".classInstructor" />
+        <activity android:name=".FeedBack" />
+        <activity android:name=".InstructorQuiz"></activity>
     </application>
 
 </manifest>
