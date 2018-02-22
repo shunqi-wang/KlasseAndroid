@@ -28,6 +28,7 @@ dependencies {
     compile "com.google.firebase:firebase-auth:10.2.0"
     compile 'com.firebase:firebase-client-android:2.5.0'
     compile "com.google.android.gms:play-services-location:10.2.0"
+    compile 'com.github.barteksc:android-pdf-viewer:2.0.3'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -40,4 +41,8 @@ dependencies {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> chatroom
 apply plugin: 'com.google.gms.google-services'
