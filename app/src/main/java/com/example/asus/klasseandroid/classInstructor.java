@@ -20,6 +20,7 @@ public class classInstructor extends AppCompatActivity {
             }
         });
         Button announce=findViewById(R.id.announceinstruct);
+        Button quiz=findViewById(R.id.quizbuttoninstruct);
         announce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +38,11 @@ public class classInstructor extends AppCompatActivity {
     public void startAnnounce()
     {
         Intent launch = new Intent(this, InstructorAnnounce.class);
+        startActivity(launch);
+    }
+    public void startQuiz()
+    {
+        Intent launch = new Intent(this, InstructorQuiz.class);
         startActivity(launch);
     }
 }
