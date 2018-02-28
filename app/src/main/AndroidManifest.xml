@@ -40,7 +40,8 @@
         <activity android:name=".InstructorAnnounce" />
         <activity android:name=".classInstructor" />
         <activity android:name=".FeedBack" />
-        <activity android:name=".InstructorQuiz"></activity>
+        <activity android:name=".InstructorQuiz" />
+        <activity android:name=".ChatRoomInstructor"></activity>
     </application>
 
 </manifest>

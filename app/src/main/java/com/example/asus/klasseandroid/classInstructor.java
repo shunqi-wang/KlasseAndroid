@@ -32,7 +32,7 @@ public class classInstructor extends AppCompatActivity {
     }
     public void startChat()
     {
-        Intent launch = new Intent(this, ChatRoom.class);
+        Intent launch = new Intent(this, ChatRoomInstructor.class);
         startActivity(launch);
     }
     public void startAnnounce()
