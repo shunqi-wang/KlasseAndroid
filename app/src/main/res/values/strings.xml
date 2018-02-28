@@ -5,10 +5,10 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
 
-        <string name="add_button">Add</string>
-        <string name="save_button">Save</string>
-        <string name="delete_button">Delete</string>
-        <string name="add_next">Add</string>
+    <string name="add_button">Add</string>
+    <string name="save_button">Save</string>
+    <string name="delete_button">Delete</string>
+    <string name="add_next">Add</string>
 
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
