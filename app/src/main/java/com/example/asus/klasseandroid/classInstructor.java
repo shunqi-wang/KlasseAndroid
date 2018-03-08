@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class classInstructor extends AppCompatActivity {
+public  class classInstructor extends AppCompatActivity {
+    int room_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        room_id = intent.getIntExtra("id", 11);
         setContentView(R.layout.activity_class_instructor);
         Button chat=findViewById(R.id.chatbuttoninstruct);
         chat.setOnClickListener(new View.OnClickListener() {
@@ -33,16 +36,19 @@ public class classInstructor extends AppCompatActivity {
     public void startChat()
     {
         Intent launch = new Intent(this, ChatRoomInstructor.class);
+        launch.putExtra("id",room_id);
         startActivity(launch);
     }
     public void startAnnounce()
     {
         Intent launch = new Intent(this, InstructorAnnounce.class);
+        launch.putExtra("id",room_id);
         startActivity(launch);
     }
     public void startQuiz()
     {
         Intent launch = new Intent(this, InstructorQuiz.class);
+        launch.putExtra("id",room_id);
         startActivity(launch);
     }
 }
