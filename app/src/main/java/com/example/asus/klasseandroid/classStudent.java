@@ -27,8 +27,7 @@ public class classStudent extends AppCompatActivity {
                 startAnnounce();
             }
         });
-        ImageView ann=findViewById(R.id.announce_img);
-        ann.bringToFront();
+
 
         Button feedback = findViewById(R.id.slidebutton);
         feedback.setOnClickListener(new View.OnClickListener() {

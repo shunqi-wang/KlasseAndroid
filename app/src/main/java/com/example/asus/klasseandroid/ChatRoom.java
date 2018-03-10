@@ -33,7 +33,9 @@ public class ChatRoom extends AppCompatActivity {
     int room_id;
 
     SharedPreferences pref;
+    SharedPreferences prefName;
     SharedPreferences.Editor editor;
+    SharedPreferences.Editor editorName;
     String t;
 
     @Override
@@ -51,6 +53,8 @@ public class ChatRoom extends AppCompatActivity {
         Intent intent = getIntent();
         pref=getApplicationContext().getSharedPreferences("Messages",MODE_PRIVATE);
         editor = pref.edit();
+        prefName=getApplicationContext().getSharedPreferences("UserDetails",MODE_PRIVATE);
+        editorName=prefName.edit();
         room_id = intent.getIntExtra("id", 11);
         Log.i("anwesha",room_id+"=room id");
 
@@ -66,9 +70,7 @@ public class ChatRoom extends AppCompatActivity {
                 input = (EditText) findViewById(R.id.input);
                 if (type == 1) {
                     ChatMessage cm = new ChatMessage(input.getText().toString(),
-                            FirebaseAuth.getInstance()
-                                    .getCurrentUser()
-                                    .getDisplayName(), "reply", room_id);
+                            prefName.getString("name","Anonymous"), "reply", room_id);
                     editor.putString(input.getText().toString()+"question",q);
                     editor.putInt(input.getText().toString()+"id",room_id);
                     t="reply";
@@ -86,9 +88,7 @@ public class ChatRoom extends AppCompatActivity {
                             .getReference()
                             .push()
                             .setValue(new ChatMessage(input.getText().toString(),
-                                    FirebaseAuth.getInstance()
-                                            .getCurrentUser()
-                                            .getDisplayName(), "question", room_id)
+                                    prefName.getString("name","Anonymous"), "question", room_id)
                             );
                     editor.putInt(input.getText().toString()+"id",room_id);
                     t="question";
