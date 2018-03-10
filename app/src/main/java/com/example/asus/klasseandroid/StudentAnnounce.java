@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class StudentAnnounce extends AppCompatActivity {
-    private Database mHelper;
+
     DisplayAdapter disadpt;
 
 

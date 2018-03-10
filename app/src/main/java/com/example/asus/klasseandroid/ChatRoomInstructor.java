@@ -19,10 +19,13 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Map;
-
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChatRoomInstructor extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -33,10 +36,10 @@ public class ChatRoomInstructor extends AppCompatActivity {
     String q = "";
     boolean val = false;
     int room_id;
-    String t;
-
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
+    String key;
+    SharedPreferences prefName;
+    SharedPreferences.Editor editorName;
+    String id;
 
 
     @Override
@@ -52,15 +55,15 @@ public class ChatRoomInstructor extends AppCompatActivity {
         setContentView(R.layout.activity_chat_room);
 
         Intent intent = getIntent();
-        pref=getApplicationContext().getSharedPreferences("Messages",MODE_PRIVATE);
-        editor = pref.edit();
-        room_id = intent.getIntExtra("id", 11);
-        Log.i("anwesha",room_id+"=room id");
 
+        room_id = intent.getIntExtra("id", 11);
+        prefName=getApplicationContext().getSharedPreferences("UserDetails",MODE_PRIVATE);
+        editorName=prefName.edit();
         FloatingActionButton fab =
                 (FloatingActionButton) findViewById(R.id.fab);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         listOfMessages = (ListView) findViewById(R.id.list_of_messages);
+
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -68,42 +71,40 @@ public class ChatRoomInstructor extends AppCompatActivity {
             public void onClick(View view) {
                 input = (EditText) findViewById(R.id.input);
                 if (type == 1) {
+
+
+                    id=FirebaseDatabase.getInstance()
+                            .getReference()
+                            .push().getKey();
                     ChatMessage cm = new ChatMessage(input.getText().toString(),
-                            FirebaseAuth.getInstance()
-                                    .getCurrentUser()
-                                    .getDisplayName(), "reply", room_id);
-                    editor.putString(input.getText().toString()+"question",q);
-                    editor.putInt(input.getText().toString()+"id",room_id);
-                    t="reply";
+                            prefName.getString("name","Anonymous"), "reply", room_id,id);
+                    cm.setQuestion(q);
 
                     FirebaseDatabase.getInstance()
-                            .getReference()
-                            .push()
-                            .setValue(cm);
+                            .getReference().child(id).setValue(cm);
                     type = 0;
 
 
 
                 } else {
-                    FirebaseDatabase.getInstance()
+                    id=FirebaseDatabase.getInstance()
                             .getReference()
-                            .push()
-                            .setValue(new ChatMessage(input.getText().toString(),
-                                    FirebaseAuth.getInstance()
-                                            .getCurrentUser()
-                                            .getDisplayName(), "question", room_id)
-                            );
-                    editor.putInt(input.getText().toString()+"id",room_id);
-                    t="question";
+                            .push().getKey();
+                    ChatMessage cm = new ChatMessage(input.getText().toString(),
+                            prefName.getString("name","Anonymous"), "question", room_id,id);
+
+                    FirebaseDatabase.getInstance()
+                            .getReference().child(id).setValue(cm);
+
 
 
                 }
-                editor.putString(input.getText().toString(), t);
-                editor.commit();
+
                 input.setText("");
                 displayChatMessages();
             }
         });
+
 
 
     }
@@ -114,29 +115,26 @@ public class ChatRoomInstructor extends AppCompatActivity {
             @Override
             protected void populateView(View v, final ChatMessage model, final int position) {
                 // Get references to the views of message.xml
-                Log.i("anwesha", "val=" + val);
-
 
                 TextView messageText = (TextView) v.findViewById(R.id.message_text);
                 TextView messageUser = (TextView) v.findViewById(R.id.message_user);
                 TextView messageTime = (TextView) v.findViewById(R.id.message_time);
 
                 final String message = model.getMessageText();
-                String type = pref.getString(message, "question");
-                int id = pref.getInt(message+"id",11);
+                final int id = model.get_id();
 
 
-                Log.i("anwesha", model.getMessageText() + " " + model.getVerified() + "");
+                Log.i("anwesha", model.getMessageText() + " " + model.getVerified() + " "+id);
                 if (id == room_id) {
                     messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
                             model.getMessageTime()));
                     messageUser.setText(model.getMessageUser());
 
-                    if (type.equals("reply")) {
-                        boolean ver = pref.getBoolean(message+"verified", false);
-                        messageText.setText(pref.getString(message+"question","")+": " + message);
+                    if (model.getMessageType().equals("reply")) {
 
-                        if ((model != null) && (ver == true)) {
+                        messageText.setText(model.getQuestion()+":" + message);
+
+                        if ((model != null) && model.getVerified()) {
                             v.setBackgroundColor(Color.parseColor("#f7f26c"));
                         } else
                             v.setBackgroundColor(Color.parseColor("#88f7a7"));
@@ -157,9 +155,9 @@ public class ChatRoomInstructor extends AppCompatActivity {
                                                         DialogInterface dialog,
                                                         int which) {
                                                     if (model.getMessageType().equals("reply")) {
-                                                        Log.i("anwesha","verifying");
-                                                        editor.putBoolean(message+"verified", true);
-                                                        editor.commit();
+                                                        FirebaseDatabase.getInstance().getReference().child(model.getId()).child("verified").setValue(true);
+                                                       
+
                                                     } else
                                                         Toast.makeText(ChatRoomInstructor.this, "Can only verify replies", Toast.LENGTH_LONG).show();
                                                     dialog.cancel();
