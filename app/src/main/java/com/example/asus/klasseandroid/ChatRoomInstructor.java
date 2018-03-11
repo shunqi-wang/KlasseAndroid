@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -18,14 +19,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 public class ChatRoomInstructor extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -34,9 +28,7 @@ public class ChatRoomInstructor extends AppCompatActivity {
     ListView listOfMessages;
     int type = 0;
     String q = "";
-    boolean val = false;
     int room_id;
-    String key;
     SharedPreferences prefName;
     SharedPreferences.Editor editorName;
     String id;
@@ -70,38 +62,41 @@ public class ChatRoomInstructor extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 input = (EditText) findViewById(R.id.input);
-                if (type == 1) {
-
-
-                    id=FirebaseDatabase.getInstance()
-                            .getReference()
-                            .push().getKey();
-                    ChatMessage cm = new ChatMessage(input.getText().toString(),
-                            prefName.getString("name","Anonymous"), "reply", room_id,id);
-                    cm.setQuestion(q);
-
-                    FirebaseDatabase.getInstance()
-                            .getReference().child(id).setValue(cm);
-                    type = 0;
-
-
-
+                String txt=input.getText().toString();
+                if (TextUtils.isEmpty(txt)) {
+                    Toast.makeText(ChatRoomInstructor.this, "Please enter message.", Toast.LENGTH_LONG).show();
                 } else {
-                    id=FirebaseDatabase.getInstance()
-                            .getReference()
-                            .push().getKey();
-                    ChatMessage cm = new ChatMessage(input.getText().toString(),
-                            prefName.getString("name","Anonymous"), "question", room_id,id);
-
-                    FirebaseDatabase.getInstance()
-                            .getReference().child(id).setValue(cm);
+                    if (type == 1) {
 
 
+                        id = FirebaseDatabase.getInstance()
+                                .getReference()
+                                .push().getKey();
+                        ChatMessage cm = new ChatMessage(txt,
+                                prefName.getString("name", "Anonymous"), "reply", room_id, id);
+                        cm.setQuestion(q);
 
+                        FirebaseDatabase.getInstance()
+                                .getReference().child(id).setValue(cm);
+                        type = 0;
+
+
+                    } else {
+                        id = FirebaseDatabase.getInstance()
+                                .getReference()
+                                .push().getKey();
+                        ChatMessage cm = new ChatMessage(txt,
+                                prefName.getString("name", "Anonymous"), "question", room_id, id);
+
+                        FirebaseDatabase.getInstance()
+                                .getReference().child(id).setValue(cm);
+
+
+                    }
                 }
+                    input.setText("");
+                    displayChatMessages();
 
-                input.setText("");
-                displayChatMessages();
             }
         });
 
@@ -156,7 +151,7 @@ public class ChatRoomInstructor extends AppCompatActivity {
                                                         int which) {
                                                     if (model.getMessageType().equals("reply")) {
                                                         FirebaseDatabase.getInstance().getReference().child(model.getId()).child("verified").setValue(true);
-                                                       
+
 
                                                     } else
                                                         Toast.makeText(ChatRoomInstructor.this, "Can only verify replies", Toast.LENGTH_LONG).show();

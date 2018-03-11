@@ -8,12 +8,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -69,38 +71,42 @@ public class ChatRoom extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 input = (EditText) findViewById(R.id.input);
-                if (type == 1) {
-
-
-                    id=FirebaseDatabase.getInstance()
-                            .getReference()
-                            .push().getKey();
-                    ChatMessage cm = new ChatMessage(input.getText().toString(),
-                            prefName.getString("name","Anonymous"), "reply", room_id,id);
-                    cm.setQuestion(q);
-
-                    FirebaseDatabase.getInstance()
-                            .getReference().child(id).setValue(cm);
-                    type = 0;
-
-
-
+                String txt=input.getText().toString();
+                if (TextUtils.isEmpty(txt)) {
+                    Toast.makeText(ChatRoom.this, "Please enter message.", Toast.LENGTH_LONG).show();
                 } else {
-                    id=FirebaseDatabase.getInstance()
-                            .getReference()
-                            .push().getKey();
-                    ChatMessage cm = new ChatMessage(input.getText().toString(),
-                            prefName.getString("name","Anonymous"), "question", room_id,id);
 
-                    FirebaseDatabase.getInstance()
-                            .getReference().child(id).setValue(cm);
+                    if (type == 1) {
 
 
+                        id = FirebaseDatabase.getInstance()
+                                .getReference()
+                                .push().getKey();
+                        ChatMessage cm = new ChatMessage(txt,
+                                prefName.getString("name", "Anonymous"), "reply", room_id, id);
+                        cm.setQuestion(q);
 
+                        FirebaseDatabase.getInstance()
+                                .getReference().child(id).setValue(cm);
+                        type = 0;
+
+
+                    } else {
+                        id = FirebaseDatabase.getInstance()
+                                .getReference()
+                                .push().getKey();
+                        ChatMessage cm = new ChatMessage(txt,
+                                prefName.getString("name", "Anonymous"), "question", room_id, id);
+
+                        FirebaseDatabase.getInstance()
+                                .getReference().child(id).setValue(cm);
+
+
+                    }
                 }
+                    input.setText("");
+                    displayChatMessages();
 
-                input.setText("");
-                displayChatMessages();
             }
         });
 

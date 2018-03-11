@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -43,34 +44,40 @@ public class InstructorAnnounce extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                RequestQueue MyRequestQueue = Volley.newRequestQueue(InstructorAnnounce.this);
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, HttpURL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if(response.contains("success")) {
-                            Toast.makeText(getApplicationContext(), "Successfully posted!", Toast.LENGTH_SHORT).show();
+                final String a=e.getText().toString();
+                if (TextUtils.isEmpty(a)) {
+                    Toast.makeText(InstructorAnnounce.this, "Please enter message.", Toast.LENGTH_LONG).show();
+                } else {
+                    RequestQueue MyRequestQueue = Volley.newRequestQueue(InstructorAnnounce.this);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, HttpURL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.contains("success")) {
+                                Toast.makeText(getApplicationContext(), "Successfully posted!", Toast.LENGTH_SHORT).show();
+                                e.setText("");
+                            }
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
-                        Log.i("anwesha",error.getMessage().toString());
-                    }
-                }){
-                    @Override
-                    protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("professor", name);
-                        params.put("content",e.getText().toString());
-                        params.put("class",room_id+"");
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                            Log.i("anwesha", error.getMessage().toString());
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("professor", name);
+                            params.put("content",a);
+                            params.put("class", room_id + "");
 
 
-                        return params;
-                    }
-                };
+                            return params;
+                        }
+                    };
 
-                MyRequestQueue.add(stringRequest);
+                    MyRequestQueue.add(stringRequest);
+                }
             }
         });
 
