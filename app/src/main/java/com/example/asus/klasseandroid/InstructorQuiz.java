@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Quiz extends AppCompatActivity implements View.OnClickListener{
-    MyAdapter myAdapter;
-    ArrayList<MyAdapter.question> ql=new ArrayList<>();
+public class InstructorQuiz extends AppCompatActivity implements View.OnClickListener{
+    InstructorQuizAdapter myAdapter;
+    ArrayList<InstructorQuizAdapter.question> ql=new ArrayList<>();
     String url="http://10.12.176.11/upload_quiz.php";
     RequestQueue requestQueue;
 
@@ -28,14 +28,14 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ql.add(new MyAdapter.question());
+        ql.add(new InstructorQuizAdapter.question());
 
         Button add=(Button)findViewById(R.id.add);
         Button save=(Button)findViewById(R.id.save);
         add.setOnClickListener(this);
         save.setOnClickListener(this);
 
-        myAdapter=new MyAdapter(ql,this);
+        myAdapter=new InstructorQuizAdapter(ql,this);
         ListView listView=(ListView)findViewById(R.id.questionList);
         listView.setAdapter(myAdapter);
     }
@@ -61,7 +61,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
                 for(int i=0;i<ql.size();i++){
                     ql.get(i).number=(i+1)+"";
                 }
-                for(final MyAdapter.question q:ql){
+                for(final InstructorQuizAdapter.question q:ql){
                     StringRequest stringRequest=new StringRequest(Request.Method.POST, url,
                             new Response.Listener<String>() {
                                 @Override
