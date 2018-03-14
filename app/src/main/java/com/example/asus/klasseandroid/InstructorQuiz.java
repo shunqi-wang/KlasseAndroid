@@ -27,7 +27,7 @@ public class InstructorQuiz extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_instructor_quiz);
         ql.add(new InstructorQuizAdapter.question());
 
         Button add=(Button)findViewById(R.id.add);
