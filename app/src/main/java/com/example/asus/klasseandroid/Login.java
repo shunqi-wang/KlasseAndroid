@@ -46,7 +46,8 @@ public class Login extends AppCompatActivity {
     String result="";
 
 
-    private static final String HttpURL = "http://192.168.1.185/Klasse/get_login_details.php";
+   // private static final String HttpURL = "http://192.168.1.185/Klasse/get_login_details.php";
+   private static final String HttpURL = "http://10.12.195.1/Klasse/get_login_details.php";
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +114,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //This code is executed if there is an error.
-                Log.i("anwesha",error.getMessage().toString());
+             Log.i("anwesha","error");
             }
         }) {
             protected Map<String, String> getParams() {
